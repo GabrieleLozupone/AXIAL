@@ -1,0 +1,126 @@
+# --------------------------------------------------------------------------------
+# Copyright (c) 2024 Gabriele Lozupone (University of Cassino and Southern Lazio).
+# All rights reserved.
+# --------------------------------------------------------------------------------
+#
+# LICENSE NOTICE
+# *************************************************************************************************************
+# By downloading/using/running/editing/changing any portion of codes in this package you agree to the license.
+# If you do not agree to this license, do not download/use/run/edit/change this code.
+# Refer to the LICENSE file in the root directory of this repository for full details.
+# *************************************************************************************************************
+#
+# Contact: Gabriele Lozupone at gabriele.lozupone@unicas.it
+# -----------------------------------------------------------------------------
+
+cuda_device: [3] # The GPUs to be used for training and testing (e.g. [0, 1, 2, 3])
+random_seed: 42
+image_type: "3D" # 2D (train on 2D slice and test on 3D volumes) or 3D (train and test on 3D volumes)
+network_3D: AttentionalConv3D # AttentionalConv3D, TransformerConv3D, TransformerConv3DV2, VitEncoderConv3D, AwareNet, MajorityVoting3D
+backbone: VGG16 # ResNet50, ResNet34, ResNet101, EfficientNetB1, EfficientNetB4, EfficientNetB6, EfficientNetV2S,
+                # EfficientNetV2M, SwinV2T, DenseNet121, DenseNet161, VGG11, VGG13, VGG16, VGG19, ConvNextBase, ConvNextSmall, ConvNextTiny
+pretrained_on: ImageNet # ImageNet, RadImageNet, None
+
+# ------------- if network_3D is AwareNet ------------
+freeze_base: True # If True, the base is frozen
+freeze_percentage: 0.5 # Percentage of the base to be frozen
+# ---------------------------------------------------
+
+# ------------ if network_3D is TransformerConv3D ------------
+num_heads: 4 # Number of heads for the multi-head attention
+num_trans_blocks: 3 # Number of layers for the transformer
+forward_expansion: 4 # Forward expansion for the transformer
+# ------------------------------------------------------------
+
+task: ['CN', 'AD'] # Defines the classes to be considered for the classification
+dataset_name: 'ADNI1Complete1Yr1.5T'
+dataset_csv: 'data/ADNI_BIDS/dataset.csv' #_conversion_36months.csv' # path to the dataset csv file
+num_workers: 32 # Number of workers for the data loader
+
+load_pretrained_model: False # If True, the pretrained model is loaded. The model path is specified in
+                             # pretrained_model_path. Is common practice to save the model with the name 2D_{backbone}.pth
+                             # or 3D_{backbone}.pth depending on the image_type.
+pretrained_model_path: 'models/AwareNet_ADvsCN.pth' # Path to the pretrained model
+
+# ----------------------- Hyperparameters -----------------------
+num_epochs: 100 # Number of epochs
+batch_size: 8 # Batch size
+dropout: 0.3 # Dropout probability
+k_folds: 5 # If <= 1, no k-fold cross validation
+val_perc_split: 0.2 # The percentage of the training set to be used for validation
+num_slices: 80 # Number of slices to be considered for each MRI volume starting from the center in specified slicing plane
+slicing_plane: axial # axial, coronal, sagittal
+learning_rate: 0.01 # Learning rate
+weight_decay: 0.0001 # Weight decay
+freeze_first_percentage: 0.5 # Percentage of the backbone to be frozen
+optimizer: AdamW # Adam, AdamW, SGD, Lion
+optimizer_kwargs: # Optimizer parameters
+    # betas: [0.5, 0.999]
+    # momentum: 0.0009
+    # amsgrad: False
+    # nesterov: True
+scheduler: None # ReduceLROnPlateau, CosineAnnealingLR, CosineAnnealingWarmRestarts, StepLR. If None, no scheduler is used
+scheduler_kwargs: # Scheduler parameters
+    # T_max: 100
+    # T_0: 10
+    # T_mult: 2
+    # eta_min: 0.0001
+    # verbose: True
+warmup_scheduler: None # LinearWarmup, ExponentialWarmup, None
+warmup_kwargs: # Warmup parameters
+    # warmup_period: 15
+    # warmup_factor: 0.1
+    # warmup_method: linear
+use_early_stopping: True # If True, the early stopping is used
+patience: 20 # Number of epochs with no improvement after which training will be stopped
+# ----------------------------------------------------------------
+
+data_augmentation_slice: True # If True, the data augmentation is applied on the 2D slices, the transformations are
+                              # defined in src/data/transforms.py
+
+# ---------------------- Data augmentation on 3D volume -----------------------
+data_augmentation:
+  RandomTransformations: # Apply a set of random transformations
+    probability: 0.4 # Probability of applying the transformations on the input image
+    transformations: # List of transformations to be applied on the input image with the specified probability
+      - transformation: RandomNoise 
+        parameters:
+          std: [0, 5] 
+          mean: [0, 1.5]
+        probability: 0.2
+      - transformation: RandomAffine
+        parameters:
+          degrees: [0, 0, 0, 0, -2, 2]
+          isotropic: true
+          translation: [-1, 1, -1, 1, 0, 0]
+        probability: 0.1
+      - transformation: RandomElasticDeformation
+        parameters:
+          num_control_points: 10
+          locked_borders: 2
+          max_displacement: 5
+        probability: 0.3
+      - transformation: RandomBiasField
+        parameters:
+          coefficients: [0.1, 0.3]
+          order: 3
+        probability: 0.4
+      - transformation: RandomBlur
+        parameters:
+          std: [0.2, 0.8]
+        probability: 0.2
+      - transformation: RandomFlip
+        parameters:
+          axes: 0
+        probability: 0.4
+      - transformation: RandomGamma
+        parameters:
+          log_gamma: [-0.5, 0.5]
+        probability: 0.4
+# ----------------------------------------------------------------
+
+extra: # extra string to track the experiments
+resume: False # If True, the experiment resume from the best model of each fold according to experiment_folder
+experiment_folder: '' # Path to the pretrained model
+skip_training: False # If True, the training is skipped and the model is tested on the test set
+revert_slices_order: False # If True, the slices order is reverted to the original one

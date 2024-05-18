@@ -1,21 +1,28 @@
-MIT License
+--------------------------------------------------------------------------------
+Copyright (c) 2024 Gabriele Lozupone (University of Cassino and Southern Lazio).
+All rights reserved.
+--------------------------------------------------------------------------------
 
-Copyright (c) 2024 Gabriele Lozupone
+LICENSE NOTICE
+************************************************************************************************************************
+By downloading/using/running/editing/changing any portion of codes in this package you agree to this license. If you do
+not agree to this license, do not download/use/run/edit/change this code.
+************************************************************************************************************************
+1. This material is free for non-profit research, but needs a special license for any commercial purpose. Please contact
+   Gabriele Lozupone at gabriele.lozupone@unicas.it for further details.
+2. You agree to appropriately cite this work in your related studies and publications.
+   Lozupone, G., "AXIAL: Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs
+                  on 3D MRI brain scans".
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+3. This material is provided by the copyright holder (Gabriele Lozupone), University of Cassino and Southern Lazio, and
+   contributors "as is" and any express or implied warranties, including, but not limited to, any implied warranties of
+   merchantability, non-infringement, or fitness for a particular purpose are disclaimed. In no event shall the
+   copyright owner, University of Cassino and Southern Lazio, or contributors be liable for any direct, indirect,
+   incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute
+   goods or services; loss of use, data, or profits; reasonable royalties; or business interruption) however caused and
+   on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise)
+   arising in any way out of the use of this software, even if advised of the possibility of such damage.
+4. Neither the name of University of Cassino and Southern Lazio, nor Gabriele Lozupone, may be used to endorse or
+   promote products derived from this software without specific prior written permission.
+************************************************************************************************************************
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.

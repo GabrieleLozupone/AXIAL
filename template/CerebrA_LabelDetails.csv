@@ -1,0 +1,52 @@
+Mindboggle ID,Label Name,RH Label,LH Labels,Notes,Dice Kappa
+2002,Caudal Anterior Cingulate,30,81,,0.79
+2003,Caudal Middle Frontal,42,93,Improved distinction from Precentral ,0.73
+2005,Cuneus,43,94,,0.67
+2006,Entorhinal,36,87,Improved delimitation ,0.78
+2007,Fusiform,24,75,,0.77
+2008,Inferior Parietal,10,61,,0.75
+2009,Inferior temporal,3,54,Removed dorsal part MT,0.72
+2010,Isthmus Cingulate,33,84,,0.79
+2011,Lateral Occipital,34,85,,0.76
+2012,Lateral Orbitofrontal,7,58,,0.8
+2013,Lingual,12,63,,0.75
+2014,Medial Orbitofrontal,15,66,,0.72
+2015,Middle Temporal,28,79,Added dorsal part,0.72
+2016,Parahippocampal,18,69,,0.86
+2017,Paracentral,16,67,,0.77
+2018,Pars Opercularis,32,83,,0.77
+2019,Pars Orbitalis,44,95,,0.8
+2020,Pars Triangularis,22,73,,0.76
+2021,Pericalcarine,6,57,,0.6
+2022,Postcentral,13,64,,0.82
+2023,Posterior Cingulate,47,98,,0.8
+2024,Precentral,35,86,,0.84
+2025,Precuneus,31,82,,0.8
+2026,Rostral Anterior Cingulate,8,59,,0.72
+2027,Rostral Middle Frontal,1,52,Improved delimitation from CMF,0.74
+2028,Superior Frontal,38,89,,0.82
+2029,Superior Parietal,9,60,Improved delimitation from Precuneus and IP,0.72
+2030,Superior Temporal,45,96,Added dorsal part limiting with IP and Supramarginal,0.87
+2031,Supramarginal,51,102,,0.81
+2034,Transverse Temporal,14,65,,0.85
+2035,Insula,23,74,,0.88
+16,Brainstem,11,62,"Completed filling, removed labelled voxels out of actual brainstem and removed CWM labels in brainstem area. ",0.65
+14,Third Ventricle,29,80,,0.68
+15,Fourth Ventricle,37,88,Missing label. Manually delimited using CSF threshold.  ,0.39
+85,Optic Chiasm,17,68,Almost inexistent label and out of place in original labelling  Completed OC and tracts (originally labelled as Ventral Diencephalon),0
+43,Lateral Ventricle,41,92,Improved continuity of labelled voxels,0.89
+44,Inferior Lateral Ventricle,5,56,,0.12
+45,Cerebellum Gray Matter,46,97,"Completed filling using threshold for CGM, removed cerebellum labels out of area (within brainstem and vermis area)",0.83
+46,Cerebellum White Matter,39,90,"Improved according threshold for CWM, removed labels in brainstem and vermis. ",0.73
+49,Thalamus,40,91,,0.97
+50,Caudate,49,100,Completed filling using threshold ,0.84
+51,Putamen,21,72,Corrected uniformity using threshold,0.87
+52,Pallidum,27,78,Improved delimitation between putamen and pallidum,0.83
+53,Hippocampus,48,99,,0.69
+54,Amygdala,19,70,,0.64
+58,Accumbens Area,4,55,,0.76
+60,Ventral Diencephalon,26,77,,0.93
+92,Basal Forebrain,25,76,,0.82
+630,Vermal lobules I-V,50,101,Improved delimitation with other vermal lobules and cerebellar hemispheres,0.66
+631,Vermal lobules VI-VII,2,53,Improved delimitation with other vermal lobules and cerebellar hemispheres,0.38
+632,Vermal lobules VIII-X,20,71,Improved delimitation with other vermal lobules and cerebellar hemispheres,0.44

@@ -1,0 +1,28 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="false" level="WEAK WARNING" enabled_by_default="false">
+      <Languages>
+        <language minSize="62" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="torch.backends.*" />
+          <option value="nibabel.filebasedimages.FileBasedImage.get_fdata" />
+          <option value="cv2.cvtColor" />
+          <option value="cv2.COLOR_GRAY2RGB" />
+          <option value="torch.utils.data" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
