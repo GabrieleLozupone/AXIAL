@@ -28,7 +28,7 @@ def get_aware_loaders(
         test_df,
         config
 ):
-    classes = train_df.diagnosis.unique()
+    classes = train_df.diagnosis.unique().sort()
     class_to_idx = {classes[i]: i for i in range(len(classes))}
     train_set = AwareDataset(dataframe=train_df,
                              load_size=256,
