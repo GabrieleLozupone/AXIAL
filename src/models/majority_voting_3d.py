@@ -18,9 +18,9 @@ from src import mynn
 
 class MajorityVoting3D(nn.Module):
     """
-    Majoriti Voting on 3D images. This module is used to classify 3D images. 
-    It uses a backbone to extract features from the images and then applies an attentional layer to the features. 
-    Finally, it applies a classifier to the output of the attentional layer.
+    Majority Voting on 3D images. This module is used to classify 3D images. 
+    It uses a backbone to extract features from the images and then applies a mean layer. 
+    Finally, it applies a classifier to the output of the mean layer.
     Args:
         backbone (torch.nn.Module): The backbone network used to extract features from the images.
         embedding_dim (int): The dimension of the embedding vector.
