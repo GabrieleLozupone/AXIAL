@@ -1,5 +1,5 @@
 # [AXIAL] 
-This is a code implementation of the *AXIAL framework* proposed in the manuscript "**Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans**" by Gabriele Lozupone. [[Paper]](https://)
+This is a code implementation of the *AXIAL framework* proposed in the manuscript "**Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans**". [[Paper]](https://)
 
 ## Abstract
 
