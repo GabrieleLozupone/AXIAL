@@ -1,5 +1,5 @@
 # [AXIAL] 
-This is a code implementation of the *AXIAL framework* proposed in the manuscript "**Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans**" by Gabriele Lozupone. [[Paper]](https://)
+This is a code implementation of the *AXIAL framework* proposed in the manuscript "**Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans**" by Gabriele Lozupone. [[Paper]](https://arxiv.org/abs/2407.02418v1)
 
 ## Abstract
 
@@ -45,7 +45,7 @@ classification.
 3. [Preprocessing](#preprocessing)
     - [Run Preprocessing Pipeline](#run-preprocessing-pipeline)
 4. [Deep Learning approaches](#deep-learning-approaches)
-    - [Diagnosis Network proposed in the paper (AttentionalConv3D)](#diagnosis-network-proposed-in-the-paper-attentionalconv3d)
+    - [Diagnosis Network proposed in the paper (Axial3D)](#diagnosis-network-proposed-in-the-paper-Axial3D)
     - [Training and test a model with 5-fold cross-validation](#training-and-test-a-model-with-5-fold-cross-validation)
     - [Attention-based Explainability](#attention-based-explainability)
     - [GradCAM-based Explainability](#gradcam-based-explainability)
@@ -142,7 +142,7 @@ This script also creates a `dataset_conversion{num_months}.csv` file which conta
 and the corresponding label for progression task (sMCI, pMCI). 
 
 ## Deep Learning approaches
-### Diagnosis Network proposed in the paper (AttentionalConv3D)
+### Diagnosis Network proposed in the paper (Axial3D)
 
 <img src="./readme_files/diagnosis_net.png">
 
@@ -209,7 +209,7 @@ The script produces a results that is the average of the 5-fold cross-validation
       <td>0.039</td>
     </tr>
     <tr>
-      <td>Ours (AttentionalConv3D)(VGG16)</td>
+      <td>Ours (Axial3D)(VGG16)</td>
       <td><b>0.856</b></td>
       <td><u>0.910</u></td>
       <td><u>0.792</u></td>
@@ -236,10 +236,10 @@ The script produces a results that is the average of the 5-fold cross-validation
       <td>0.867</td>
       <td><b>0.797</b></td>
       <td>0.667</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
+      <td>0.629</td>
+      <td>0.653</td>
+      <td>0.601</td>
+      <td>0.254</td>
     </tr>
   </tbody>
 </table>
@@ -249,7 +249,7 @@ The script produces a results that is the average of the 5-fold cross-validation
 > configuration files according to your specific paths and requirements.
 
 ## Attention-based Explainability
-### Attention XAI approach proposed in the paper with AttentionalConv3D
+### Attention XAI approach proposed in the paper with Axial3D
 
 <img src="./readme_files/xai_diagnosis_net.png">
 
@@ -457,7 +457,7 @@ Results:
   </tr>
   <tr>
     <td style="text-align: center;">
-      <em>Visualization of mean 3D GradCAM++ map of entire dataset overlapped to MNI152 template with <strong>AttentionalConv3D (VGG16)</strong></em>
+      <em>Visualization of mean 3D GradCAM++ map of entire dataset overlapped to MNI152 template with <strong>Axial3D (VGG16)</strong></em>
     </td>
     <td style="text-align: center;">
       <em>Visualization of mean 3D GradCAM++ map of entire dataset overlapped to MNI152 template with <strong>TransformerConv3D (VGG16)</strong></em>
@@ -479,7 +479,13 @@ This project is licensed. Please review the [License](LICENSE) file for more inf
 If you find this work useful for your research, please 🌟 our project and cite [our paper](https://) :
 
 ```
-@article{
-    
+@misc{lozupone2024axialattentionbasedexplainabilityinterpretable,
+      title={AXIAL: Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans}, 
+      author={Gabriele Lozupone and Alessandro Bria and Francesco Fontanella and Claudio De Stefano},
+      year={2024},
+      eprint={2407.02418},
+      archivePrefix={arXiv},
+      primaryClass={eess.IV},
+      url={https://arxiv.org/abs/2407.02418}, 
 }
 ```

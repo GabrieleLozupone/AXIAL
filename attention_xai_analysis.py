@@ -22,7 +22,7 @@ from src.explainability.attention.utils import compute_xai_metrics
 
 
 def main():
-    model_name = "AttentionalConv3DVGG16"
+    model_name = "Axial3DVGG16"
     # Run the inference function
     print(f"Running inference for {model_name}...")
     inference(model_name=model_name)

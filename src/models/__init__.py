@@ -13,7 +13,7 @@
 # Contact: Gabriele Lozupone at gabriele.lozupone@unicas.it
 # -----------------------------------------------------------------------------
 from .transformer_conv_3d import TransformerConv3D
-from .attentional_conv_3d import AttentionalConv3D
+from .axial_3d import Axial3D
 from .add_classifier import BackboneWithClassifier
 from .majority_voting_3d import MajorityVoting3D
 from .load_backbone import get_backbone

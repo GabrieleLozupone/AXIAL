@@ -33,7 +33,7 @@ from src.data import get_dataloaders
 from src.data import get_transforms
 from src.data import load_dataframe
 from src.data import train_val_test_subject_split
-from src.models import AttentionalConv3D, TransformerConv3D
+from src.models import Axial3D, TransformerConv3D
 from src.models import get_backbone
 from src.models.aware_net.awarenet import AwareNet
 from src.models.aware_net.get_dataloader import get_aware_loaders
@@ -198,13 +198,13 @@ def save_cams(model_name="TransformerConv3DV2", cam_method="gradcam++", num_work
                         dropout=0.0,
                         attn_dropout=0.0,
                     ).to(device)
-                elif model_name == "AttentionalConv3DVGG16":
-                    model = AttentionalConv3D(backbone=backbone,
-                                              num_classes=num_classes,
-                                              embedding_dim=embedding_dim,
-                                              num_slices=num_slices,
-                                              return_attention_weights=False
-                                              ).to(device)
+                elif model_name == "Axial3DVGG16":
+                    model = Axial3D(backbone=backbone,
+                                    num_classes=num_classes,
+                                    embedding_dim=embedding_dim,
+                                    num_slices=num_slices,
+                                    return_attention_weights=False
+                                    ).to(device)
             model.load_state_dict(torch.load(model_path, map_location=device))
             print(f"Model {model_name} for {plane} plane loaded")
             for input, _ in tqdm(dataloader, total=len(dataloader)):

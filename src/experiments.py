@@ -14,7 +14,7 @@
 # -----------------------------------------------------------------------------
 from src import engine
 from src.data import get_transforms, get_dataloaders
-from src.models import get_backbone, BackboneWithClassifier, AttentionalConv3D, TransformerConv3D, compute_metrics
+from src.models import get_backbone, BackboneWithClassifier, Axial3D, TransformerConv3D, compute_metrics
 from src.models.majority_voting_3d import MajorityVoting3D
 from src.mynn import get_optim, get_schedul, get_warmup_schedul
 from src.utils import set_seeds, plot_loss_curves
@@ -76,15 +76,15 @@ def run_experiment(train_df, val_df, test_df, config, writer, device, fold, tria
         ).to(device)
         print(f"Using {config['backbone']} as backbone for 2D images with Majority Voting\n")
     elif config['image_type'] == "3D":
-        if config['network_3D'] == "AttentionalConv3D":
-            model = AttentionalConv3D(
+        if config['network_3D'] == "Axial3D":
+            model = Axial3D(
                 backbone=backbone,
                 embedding_dim=feat_map_dim,
                 num_classes=num_classes,
                 num_slices=config['num_slices'],
                 dropout=config['dropout']
             ).to(device)
-            print(f"Using {config['backbone']} as backbone for AttentionalConv3D on 3D images\n")
+            print(f"Using {config['backbone']} as backbone for Axial3D on 3D images\n")
         elif config['network_3D'] == "MajorityVoting3D":
             model = MajorityVoting3D(
                 backbone=backbone,

@@ -16,7 +16,7 @@
 cuda_device: [3] # The GPUs to be used for training and testing (e.g. [0, 1, 2, 3])
 random_seed: 42
 image_type: "3D" # 2D (train on 2D slice and test on 3D volumes) or 3D (train and test on 3D volumes)
-network_3D: AttentionalConv3D # AttentionalConv3D, TransformerConv3D, TransformerConv3DV2, VitEncoderConv3D, AwareNet, MajorityVoting3D
+network_3D: Axial3D # Axial3D, TransformerConv3D, TransformerConv3DV2, VitEncoderConv3D, AwareNet, MajorityVoting3D
 backbone: VGG16 # ResNet50, ResNet34, ResNet101, EfficientNetB1, EfficientNetB4, EfficientNetB6, EfficientNetV2S,
                 # EfficientNetV2M, SwinV2T, DenseNet121, DenseNet161, VGG11, VGG13, VGG16, VGG19, ConvNextBase, ConvNextSmall, ConvNextTiny
 pretrained_on: ImageNet # ImageNet, RadImageNet, None

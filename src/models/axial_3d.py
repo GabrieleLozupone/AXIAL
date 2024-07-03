@@ -16,7 +16,7 @@ import torch.nn as nn
 from src import mynn
 
 
-class AttentionalConv3D(nn.Module):
+class Axial3D(nn.Module):
     """
     Attentional Convolutional 3D Network. This module is used to classify 3D images. 
     It uses a backbone to extract features from the images and then applies an attentional layer to the features. 

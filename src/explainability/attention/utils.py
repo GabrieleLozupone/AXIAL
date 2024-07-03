@@ -9,7 +9,7 @@ import os
 from src.models import get_backbone
 from src.data import get_transforms
 from src.data import get_dataloaders
-from src.models import AttentionalConv3D
+from src.models import Axial3D
 import torch
 import numpy as np
 import matplotlib.pyplot as plt
@@ -25,7 +25,7 @@ pink_light = "#FFE0F4"
 pink_dark = "#BD7DA3"
 
 
-def inference(model_name="AttentionalConv3DVGG16", random_seed=42, num_workers=10, cuda_idx=[3], num_slices=100):
+def inference(model_name="Axial3DVGG16", random_seed=42, num_workers=10, cuda_idx=[3], num_slices=100):
     # Get device to test on
     device = get_device(cuda_idx=cuda_idx)
     task = ['CN', 'AD']
@@ -96,7 +96,7 @@ def inference(model_name="AttentionalConv3DVGG16", random_seed=42, num_workers=1
             # Number of classes
             num_classes = 2
             # Get the dataloader for the current plane
-            if model_name == "AttentionalConv3DVGG16":
+            if model_name == "Axial3DVGG16":
                 _, _, dataloader, _ = get_dataloaders(train_df=test_df,
                                                       val_df=test_df,
                                                       test_df=test_df,
@@ -108,12 +108,12 @@ def inference(model_name="AttentionalConv3DVGG16", random_seed=42, num_workers=1
                                                       output_type="3D",
                                                       slicing_plane=plane)
                 # Load the model
-                model = AttentionalConv3D(backbone=backbone,
-                                          num_classes=num_classes,
-                                          embedding_dim=embedding_dim,
-                                          num_slices=model_path_num_slices[plane][1],
-                                          return_attention_weights=True
-                                          ).to(device)
+                model = Axial3D(backbone=backbone,
+                                num_classes=num_classes,
+                                embedding_dim=embedding_dim,
+                                num_slices=model_path_num_slices[plane][1],
+                                return_attention_weights=True
+                                ).to(device)
             elif model_name == "AwareNet":
                 _, _, dataloader, _ = get_aware_loaders(
                     train_df=test_df,
@@ -139,7 +139,7 @@ def inference(model_name="AttentionalConv3DVGG16", random_seed=42, num_workers=1
                     # Move the data to the device
                     X, y = X.to(device, non_blocking=True), y.to(device, non_blocking=True)
                     # Forward pass
-                    if model_name == "AttentionalConv3DVGG16":
+                    if model_name == "Axial3DVGG16":
                         preds_logs, weights = model(X)
                     elif model_name == "AwareNet":
                         preds_logs, _, weights, _, _ = model(X)
@@ -202,7 +202,7 @@ def inference(model_name="AttentionalConv3DVGG16", random_seed=42, num_workers=1
                 attention_map.cpu().numpy())
 
 
-def save_histograms_folds(model_name="AttentionalConv3DVGG16", percentile=75, pad=False, tollerance=2):
+def save_histograms_folds(model_name="Axial3DVGG16", percentile=75, pad=False, tollerance=2):
     # Plot the histograms for the attention weights for each fold
     for fold_num in range(1, 6):
         # Load the attention weights for each plane
@@ -285,7 +285,7 @@ def plot_histogram(plane_weights, plane, model_name, fold_num, percentile, tolle
                              f"{plane}_attention_histogram.pdf"), bbox_inches='tight')
 
 
-def entire_dataset_histogram(model_name="AttentionalConv3DVGG16", percentile=75, pad=False, tollerance=2):
+def entire_dataset_histogram(model_name="Axial3DVGG16", percentile=75, pad=False, tollerance=2):
     attention_weights = {
         "axial": torch.tensor([]),
         "coronal": torch.tensor([]),
@@ -363,7 +363,7 @@ def entire_dataset_histogram(model_name="AttentionalConv3DVGG16", percentile=75,
                        tollerance=tollerance)
 
 
-def generate_explainable_mri(model_name="AttentionalConv3DVGG16", fold_num="entire_dataset", amplification_factor=10):
+def generate_explainable_mri(model_name="Axial3DVGG16", fold_num="entire_dataset", amplification_factor=10):
     try:
         attention_map = np.load(f"explainability/{model_name}/fold_{fold_num}/3D_attention_map.npy")
     except:
@@ -389,7 +389,7 @@ def generate_explainable_mri(model_name="AttentionalConv3DVGG16", fold_num="enti
     print("Explainable MRI saved")
 
 
-def compute_xai_metrics(model_name="AttentionalConv3DVGG16", fold_num="entire_dataset", percentile=99.9):
+def compute_xai_metrics(model_name="Axial3DVGG16", fold_num="entire_dataset", percentile=99.9):
     try:
         attention_map = np.load(f"explainability/{model_name}/fold_{fold_num}/3D_attention_map.npy")
     except:

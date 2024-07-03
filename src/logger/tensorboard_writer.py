@@ -36,8 +36,8 @@ def create_writer(config: dict,
                   '_scheduler_' + str(config["scheduler"]).lower() + \
                   '_pretrained_' + str(config["load_pretrained_model"]).lower()
     if config["image_type"] == "3D":
-        if config["network_3D"] == "AttentionalConv3D":
-            model_name = os.path.join("AttentionalConv3D", config["backbone"])
+        if config["network_3D"] == "Axial3D":
+            model_name = os.path.join("Axial3D", config["backbone"])
         if config["network_3D"] == "MajorityVoting3D":
             model_name = os.path.join("MajorityVoting3D", config["backbone"])
         elif config["network_3D"] == "TransformerConv3D":
