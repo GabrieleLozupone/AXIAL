@@ -476,16 +476,13 @@ Results:
 This project is licensed. Please review the [License](LICENSE) file for more information.
 
 ## Citation
-If you find this work useful for your research, please 🌟 our project and cite [our paper](https://) :
+If you find this work useful for your research, please 🌟 our project and cite [our paper](https://arxiv.org/abs/2407.02418v1) :
 
 ```
-@misc{lozupone2024axialattentionbasedexplainabilityinterpretable,
-      title={AXIAL: Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans}, 
-      author={Gabriele Lozupone and Alessandro Bria and Francesco Fontanella and Claudio De Stefano},
-      year={2024},
-      eprint={2407.02418},
-      archivePrefix={arXiv},
-      primaryClass={eess.IV},
-      url={https://arxiv.org/abs/2407.02418}, 
+@article{lozupone2024axial,
+  title={AXIAL: Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans},
+  author={Lozupone, Gabriele and Bria, Alessandro and Fontanella, Francesco and De Stefano, Claudio},
+  journal={arXiv preprint arXiv:2407.02418},
+  year={2024}
 }
 ```
