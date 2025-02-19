@@ -1,5 +1,5 @@
 # [AXIAL] 
-This is the original code implementation of the *AXIAL framework* proposed in the manuscript "**AXIAL: Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans**" by Gabriele Lozupone. [[Paper]](https://arxiv.org/abs/2407.02418v1)
+This is the original code implementation of the *AXIAL framework* proposed in the manuscript "**AXIAL: Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans**" by Gabriele Lozupone. [[Paper]](https://arxiv.org/abs/2407.02418v2)
 
 ## Abstract
 
@@ -476,12 +476,12 @@ Results:
 This project is licensed. Please review the [License](LICENSE) file for more information.
 
 ## Citation
-If you find this work useful for your research, please 🌟 our project and cite [our paper](https://arxiv.org/abs/2407.02418v1) :
+If you find this work useful for your research, please 🌟 our project and cite [our paper](https://arxiv.org/abs/2407.02418v2) :
 
 ```
 @article{lozupone2024axial,
   title={AXIAL: Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans},
-  author={Lozupone, Gabriele and Bria, Alessandro and Fontanella, Francesco and De Stefano, Claudio},
+  author={Lozupone, Gabriele and Bria, Alessandro and Fontanella, Francesco and Meijer, Frederick JA and De Stefano, Claudio},
   journal={arXiv preprint arXiv:2407.02418},
   year={2024}
 }
