@@ -1,5 +1,66 @@
-# [AXIAL] 
-This is the original code implementation of the *AXIAL framework* proposed in the manuscript "**AXIAL: Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans**" by Gabriele Lozupone. [[Paper]](https://arxiv.org/abs/2407.02418v2)
+# AXIAL — Scalable 2.5D Attention Framework for Interpretable 3D MRI Classification
+
+AXIAL is a **2.5D deep learning framework** that turns a 3D volume into a sequence of 2D slices, extracts features with a **pretrained 2D CNN backbone**, and learns a **volumetric representation via slice-attention aggregation**. The same attention mechanism yields **voxel-level explanations** aligned with model decisions.
+
+This repository contains the **original code implementation** of the AXIAL framework proposed in:
+
+**AXIAL: Attention-based eXplainability for Interpretable Alzheimer's Localized Diagnosis using 2D CNNs on 3D MRI brain scans**  
+Gabriele Lozupone et al. — [[Paper]](https://arxiv.org/abs/2407.02418v2)
+
+> The paper uses Alzheimer’s Disease diagnosis as a benchmark on **ADNI**, but the core contribution is a **general, reusable approach** for efficient 3D scan classification and explainability using 2D backbones.
+
+<img src="./readme_files/summary.png">
+
+## Why this repo?
+
+If you build models for **high-dimensional data** (3D medical imaging, scientific imaging, volumetric sensing), you often face a trade-off:
+
+- **3D CNNs**: strong but expensive + harder to interpret
+- **2D slice pipelines**: efficient but weak global reasoning + brittle explainability
+
+**AXIAL bridges this gap**:
+
+- **Scalability**: use fast pretrained 2D backbones (transfer learning friendly)
+- **3D reasoning**: learn slice importance and global volumetric features end-to-end
+- **Explainability**: produce **voxel-level attention maps** and region-level metrics
+- **Reproducibility**: standardized ADNI→BIDS + Clinica preprocessing pipeline
+
+## Key results (paper benchmark)
+
+On **ADNI (ADNI1 Complete 1Yr 1.5T)**, AXIAL reports:
+
+- **AD vs CN**: ACC **0.856**, MCC **0.712**
+- **sMCI vs pMCI (prognosis)**: ACC **0.725**, MCC **0.443**
+
+Additionally, the explainability pipeline consistently highlights clinically relevant regions
+(e.g., hippocampus, amygdala, parahippocampal, inferior lateral ventricles) with voxel-level precision.
+
+## Highlights
+
+- **2.5D architecture**: 2D backbone + attention aggregation for volumetric modeling  
+- **End-to-end slice importance**: learns which slices matter (no heuristics)  
+- **Voxel-level explainability**: attention-based 3D maps + GradCAM baseline  
+- **Leakage-safe evaluation**: subject-wise splitting for cross-validation  
+- **Reproducible data pipeline**: ADNI → BIDS conversion + Clinica preprocessing
+
+## Table of Contents
+
+1. [Installation](#installation)
+2. [Data Preparation](#data-preparation)
+    - [ADNI Data Download](#adni-data-download)
+    - [Clinical Data Download](#clinical-data-download)
+    - [Rename CSV Files](#rename-csv-files)
+    - [Install Clinica Software](#install-clinica-software)
+    - [Convert ADNI to BIDS](#convert-adni-to-bids)
+3. [Preprocessing](#preprocessing)
+    - [Run Preprocessing Pipeline](#run-preprocessing-pipeline)
+4. [Deep Learning approaches](#deep-learning-approaches)
+    - [Diagnosis Network proposed in the paper (Axial3D)](#diagnosis-network-proposed-in-the-paper-Axial3D)
+    - [Training and test a model with 5-fold cross-validation](#training-and-test-a-model-with-5-fold-cross-validation)
+    - [Attention-based Explainability](#attention-based-explainability)
+    - [GradCAM-based Explainability](#gradcam-based-explainability)
+5. [Acknowledgement](#acknowledgement)
+6. [License](#license)
 
 ## Abstract
 
@@ -32,25 +93,6 @@ based on the attention mechanism.
 The repository aims to provide a comprehensive framework for sMRI preprocessing and deep learning analysis, enabling
 researchers to efficiently analyze ADNI data and develop advanced models for Alzheimer's disease detection and
 classification.
-
-## Table of Contents
-
-1. [Installation](#installation)
-2. [Data Preparation](#data-preparation)
-    - [ADNI Data Download](#adni-data-download)
-    - [Clinical Data Download](#clinical-data-download)
-    - [Rename CSV Files](#rename-csv-files)
-    - [Install Clinica Software](#install-clinica-software)
-    - [Convert ADNI to BIDS](#convert-adni-to-bids)
-3. [Preprocessing](#preprocessing)
-    - [Run Preprocessing Pipeline](#run-preprocessing-pipeline)
-4. [Deep Learning approaches](#deep-learning-approaches)
-    - [Diagnosis Network proposed in the paper (Axial3D)](#diagnosis-network-proposed-in-the-paper-Axial3D)
-    - [Training and test a model with 5-fold cross-validation](#training-and-test-a-model-with-5-fold-cross-validation)
-    - [Attention-based Explainability](#attention-based-explainability)
-    - [GradCAM-based Explainability](#gradcam-based-explainability)
-5. [Acknowledgement](#acknowledgement)
-6. [License](#license)
 
 ## Installation
 
